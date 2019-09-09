@@ -41,5 +41,11 @@ class Post
      */
     private $body;
 
+    public function __construct($postObject) {
+        $this->id = $postObject->id;
+        $this->userId = $postObject->userId;
+        $this->title = $postObject->title;
+        $this->body = $postObject->body;
+    }
 
 }
