@@ -29,8 +29,8 @@ abstract class DownloadFromJsonCommand extends Command
     protected function configure()
     {
         $this
-        ->setDescription("Gets posts from {$this->url}")
-        ->setHelp('Simply call this command to populate the database!');
+            ->setDescription("Gets posts from {$this->url}")
+            ->setHelp('Simply call this command to populate the database!');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -41,7 +41,6 @@ abstract class DownloadFromJsonCommand extends Command
         foreach(json_decode(file_get_contents($this->url)) as $object) {
             $this->entityManager->persist(new $this->entityClass($object));
         }
-        
         $this->entityManager->flush();
     }
 }
