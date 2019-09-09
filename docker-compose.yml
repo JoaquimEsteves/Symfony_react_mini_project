@@ -1,0 +1,33 @@
+version: "3.4"
+
+services:
+  # MySql server
+  db:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      # MYSQL_USER: example
+      # MYSQL_PASSWORD: example
+      # MYSQL_DATABASE: symfony
+    restart: always
+    command: --init-file /data/application/init.sql
+    volumes:
+      - ./database/.data/:/var/lib/mysql
+      - ./database/init.sql:/data/application/init.sql
+  # Synfony and react servers
+  server:
+    build: .
+    volumes:
+      - "./front-end/:/symfony-and-react/front-end/"
+      - "./back-end/:/symfony-and-react/back-end/"
+    ports:
+      # synfony server is now available in localhost:8005
+      - "0.0.0.0:8005:8000"
+      # react server is now available in localhost:5000
+      - "0.0.0.0:5000:5000"
+    # command: /symfony-and-react/front-end/ npm install
+    links:
+      - db
+    command: php /symfony-and-react/back-end/server/bin/console server:run 0.0.0.0:8000
