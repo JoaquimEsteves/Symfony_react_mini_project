@@ -14,3 +14,8 @@ Go to the server container and execute:
 
 `php /symfony-and-react/back-end/server/bin/console app:download-users`
 `php /symfony-and-react/back-end/server/bin/console app:download-posts`
+
+Here's a pretty gif of the application working!
+
+
+![Screenshot](pretty.gif)
