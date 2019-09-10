@@ -1,5 +1,3 @@
-import { string } from "prop-types"
-
 export type userProps = {
     id: Number;
     name: string;
