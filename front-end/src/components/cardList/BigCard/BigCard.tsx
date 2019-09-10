@@ -18,10 +18,14 @@ type Posts = Post[];
 
 const BigCard = (props: BigCardProps) => {
     const [posts, setPosts] = useState<Posts>([]);
+    const [hidden, setHidden] = useState(false);
+    
     useEffect(() => {
         if (!props.user) {
+            // No user selected, nothing todo
             return;
         }
+        setHidden(false);
         fetch(`http://localhost:8005/api/posts/${props.user.id}`)
             .then(response => {
                 return response.json();
@@ -29,12 +33,16 @@ const BigCard = (props: BigCardProps) => {
             .then(data => setPosts(JSON.parse(data)))
     }, [props]);
 
+    const hide = () => {
+        setHidden(true);
+        console.log(hidden);
+    }
 
     if (!props.user) {
         // Nothing todo
+        // Sadly needs to be declared after useEffect
         return <div />;
     }
-
     const BigCardElements = map(props.user, (value, key) => {
         if (key === "id") {
             return;
@@ -43,30 +51,34 @@ const BigCard = (props: BigCardProps) => {
     })
 
     const BigCardPosts = posts.map((post, id) => {
-        return <div key={`${id}`} className="card">{
-            map(post, (value, key: string) => {
-                if (key === "id") {
-                    return;
-                }
-                if (key === "name") {
-                    return <h2>{value}</h2>
-                }
-                return <p key={`${key}`}><strong>{key}:</strong>{value}</p>
-            })
-        }
+        return <div key={`${id}`} className="card">
+            {
+                map(post, (value, key: string) => {
+                    if (key === "id") {
+                        return;
+                    }
+                    if (key === "name") {
+                        return <h2>{value}</h2>
+                    }
+                    return <p key={`${key}`}><strong>{key}:</strong>{value}</p>
+                })
+            }
         </div>
     });
 
     //  Get the relevant posts!
     return (
-        <div>
+        <div className={hidden ? 'hidden' : ''}>
             <div className="card">
                 <img src={`https://robohash.org/${props.user.id}?size=200x200`} alt='card' />
                 <div>
                     {BigCardElements}
                 </div>
             </div>
-            <br/>
+            <br />
+            <button onClick={(event: React.MouseEvent<HTMLElement>) => {
+                hide()
+            }}>Hide me!</button>
             {BigCardPosts}
         </div>
     );
