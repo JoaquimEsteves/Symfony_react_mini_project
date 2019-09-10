@@ -42,5 +42,6 @@ abstract class DownloadFromJsonCommand extends Command
             $this->entityManager->persist(new $this->entityClass($object));
         }
         $this->entityManager->flush();
+        $output->writeln("Sweet! We're done");
     }
 }

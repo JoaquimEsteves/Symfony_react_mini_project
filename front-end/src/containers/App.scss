@@ -1,0 +1,8 @@
+@import '~tachyons-sass/tachyons';
+
+.searchBox {
+    @extend .ba;
+    @extend .b--green;
+    @extend .bg-lightest-blue;
+    @extend .tc;
+}

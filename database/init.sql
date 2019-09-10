@@ -16,8 +16,7 @@ CREATE TABLE IF NOT EXISTS USER (
     website VARCHAR(100) NULL,
     company_name VARCHAR(100) NULL,
     company_catch_phrase VARCHAR(100) NULL,
-    company_bs VARCHAR(100) NULL,
-    PRIMARY KEY (id)
+    company_bs VARCHAR(100) NULL
 );
 
 ALTER TABLE USER
@@ -27,8 +26,7 @@ CREATE TABLE IF NOT EXISTS POST (
     id INT NOT NULL,
     user_id INT NULL,
     title VARCHAR(100) NULL,
-    body VARCHAR(250) NULL,
-    PRIMARY KEY (id)
+    body VARCHAR(250) NULL
 );
 
 ALTER TABLE POST

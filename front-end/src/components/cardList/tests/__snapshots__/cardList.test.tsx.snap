@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`try out the snapshot yo 1`] = `
+"<div id=\\"cardList\\">
+  <div className=\\"card\\">
+    <img src=\\"https://robohash.org/1?size=200x200\\" alt=\\"card\\" />
+    <div>
+      <h2>
+        John Doe
+      </h2>
+      <p>
+        johndoe@email.com
+      </p>
+    </div>
+  </div>
+</div>"
+`;

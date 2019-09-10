@@ -1,0 +1,12 @@
+@import '~tachyons-sass/tachyons';
+
+.card {
+    @extend .bg-light-green;
+    @extend .dib;
+    @extend .br3;
+    @extend .bw2;
+    @extend .shadow-5;
+    @extend .pa3;
+    @extend .ma2;
+    @extend .grow;
+}

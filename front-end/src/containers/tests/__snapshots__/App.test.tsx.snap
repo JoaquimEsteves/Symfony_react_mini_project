@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App with no Store 1`] = `
+"<div className=\\"tc\\">
+  <Header />
+  <div>
+    <input aria-label=\\"Search the users\\" className=\\"searchBox\\" type=\\"search\\" placeholder=\\"yo\\" onChange={[Function: mockConstructor]} />
+  </div>
+  <Scroll>
+    <ErrorBoundary>
+      <div id=\\"cardList\\" />
+    </ErrorBoundary>
+  </Scroll>
+</div>"
+`;

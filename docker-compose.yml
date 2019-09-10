@@ -27,6 +27,8 @@ services:
       - "0.0.0.0:8005:8000"
       # react server is now available in localhost:5000
       - "0.0.0.0:5000:5000"
+      # react development server is now available in localhost:5000
+      - "0.0.0.0:3000:3000"
     # command: /symfony-and-react/front-end/ npm install
     links:
       - db
