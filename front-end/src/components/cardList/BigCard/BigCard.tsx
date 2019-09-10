@@ -3,6 +3,9 @@ import './BigCard.scss';
 import { userProps } from '../users';
 import { map } from "lodash";
 
+import Map from 'pigeon-maps'
+import Marker from 'pigeon-marker'
+
 export type BigCardProps = {
     user: userProps | undefined;
 }
@@ -19,23 +22,38 @@ type Posts = Post[];
 const BigCard = (props: BigCardProps) => {
     const [posts, setPosts] = useState<Posts>([]);
     const [hidden, setHidden] = useState(false);
-    
-    useEffect(() => {
-        if (!props.user) {
+
+    const getPosts = (user: userProps | undefined) => {
+        if (!user) {
             // No user selected, nothing todo
             return;
         }
         setHidden(false);
-        fetch(`http://localhost:8005/api/posts/${props.user.id}`)
+        fetch(`http://localhost:8005/api/posts/${user.id}`)
             .then(response => {
                 return response.json();
             })
             .then(data => setPosts(JSON.parse(data)))
+    }
+
+    useEffect(() => {
+        getPosts(props.user);
     }, [props]);
 
     const hide = () => {
         setHidden(true);
-        console.log(hidden);
+    }
+
+    const deletePost = (id: number) => {
+        fetch(`http://localhost:8005/api/delete/post/${id}`, {
+            method: "POST"
+        })
+            .then(res => res.text())
+            .then((text) => {
+                alert(`Here's the response from the server: ${text}`);
+                // Refresh the posts!
+                getPosts(props.user);
+            });
     }
 
     if (!props.user) {
@@ -47,11 +65,11 @@ const BigCard = (props: BigCardProps) => {
         if (key === "id") {
             return;
         }
-        return <p key={`${key}`}><strong>{key}:</strong>{value}</p>
+        return <p key={`${key}`}><strong>{key}: </strong>{value}</p>
     })
 
     const BigCardPosts = posts.map((post, id) => {
-        return <div key={`${id}`} className="card">
+        return <div key={`${id}`} className="card" >
             {
                 map(post, (value, key: string) => {
                     if (key === "id") {
@@ -60,12 +78,15 @@ const BigCard = (props: BigCardProps) => {
                     if (key === "name") {
                         return <h2>{value}</h2>
                     }
-                    return <p key={`${key}`}><strong>{key}:</strong>{value}</p>
+                    return <p key={`${key}`}><strong>{key}: </strong>{value}</p>
                 })
             }
+            <button className="f6 link dim ph3 pv2 mb2 dib white bg-black"
+                onClick={(_event: React.MouseEvent<HTMLElement>) => {
+                    deletePost(post.id)
+                }}>Delete me!</button>
         </div>
     });
-
     //  Get the relevant posts!
     return (
         <div className={hidden ? 'hidden' : ''}>
@@ -76,10 +97,16 @@ const BigCard = (props: BigCardProps) => {
                 </div>
             </div>
             <br />
-            <button onClick={(event: React.MouseEvent<HTMLElement>) => {
-                hide()
-            }}>Hide me!</button>
+            <button className="f6 link dim ph3 pv2 mb2 dib white bg-black"
+                onClick={(_event: React.MouseEvent<HTMLElement>) => {
+                    hide()
+                }}>Hide me!</button>
+            <br />
             {BigCardPosts}
+            <br />
+            <Map center={[0, 0]} zoom={1} width={500} height={400}>
+                <Marker anchor={[props.user.addressGeoLat, props.user.addressGeoLng]} />
+            </Map>
         </div>
     );
 }
