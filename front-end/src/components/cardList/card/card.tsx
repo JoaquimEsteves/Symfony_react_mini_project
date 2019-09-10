@@ -1,25 +1,17 @@
 import React from 'react';
 import './card.scss';
 import { userProps } from '../users';
-import {map} from "lodash";
 
-const Card = (props: userProps) => {
-    const {id} = props;
-    const cardElements = map(props, (value:string, key:any) => {
-        if(key === "name") {
-            return <h2>{value}</h2>
-        }
-        if(key === "id") {
-            return;
-        }
-        return <p><strong>{key}: </strong>{value}</p>
-      });
-
+const Card = (props: userProps, seePosts: ((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined) => {
+    const { id, name, username, email } = props;
     return (
-        <div key={`${id}`} className="card">
+        <div key={`${id}`} className="card" onClick={seePosts}>
             <img src={`https://robohash.org/${id}?size=200x200`} alt='card' />
             <div>
-                {cardElements}
+                <h2>{name}</h2>
+                <p>{name}</p>
+                <p>{username}</p>
+                <p>{email}</p>
             </div>
         </div>
     );

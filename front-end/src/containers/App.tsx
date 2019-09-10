@@ -64,7 +64,7 @@ export class App extends React.Component<AppProps, AppState> {
                 </div>
                 
                 <ErrorBoundary>
-                    {CardList(this.filterUsers(users))}
+                    <CardList {...{robot_list:(this.filterUsers(users))}}/>
                 </ErrorBoundary>
 
             </div>
