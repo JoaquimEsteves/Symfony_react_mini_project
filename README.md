@@ -72,7 +72,7 @@ Finally, it's also the first open source project I've made a small contribution 
 
 [and](https://github.com/mariusandra/pigeon-maps/pull/70)
 
-#### What where your biggest challanges?
+#### What where your biggest challenges?
 
 Symfony was a little tricky to work with,
 mostly due to the fact that it's similar, but just different enough to the other PHP framwork I've worked with, Zend.
