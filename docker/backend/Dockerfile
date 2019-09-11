@@ -22,6 +22,8 @@ COPY ./back-end/ /symfony-and-react/back-end/
 WORKDIR /symfony-and-react/back-end/server
 
 # Install all of the necessary dependencies
-RUN cd /symfony-and-react/back-end/server && composer install
+RUN cd /symfony-and-react/back-end/server
+
+CMD bash -c "composer install && php /symfony-and-react/back-end/server/bin/console server:run 0.0.0.0:8000"
 
 EXPOSE 8000

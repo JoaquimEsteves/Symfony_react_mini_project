@@ -24,9 +24,8 @@ COPY ./front-end /symfony-and-react/front-end/
 
 WORKDIR /symfony-and-react/front-end/
 
-# Install all of the necessary dependencies
-# Install all of the necessary dependencies
-RUN cd /symfony-and-react/front-end/ && npm install && \
-    npm update && npm run build
+RUN cd /symfony-and-react/front-end/
 
-EXPOSE 8000
+
+# Install all of the necessary dependencies
+CMD bash -c "npm install && npm update && npm run build && npm run serve"
