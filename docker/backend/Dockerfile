@@ -17,11 +17,11 @@ RUN apt install wget && \
     wget https://get.symfony.com/cli/installer -O - | bash
 
 # Copy the base files over, we use compose volumes in the yml file but it's still useful to copy them here so we don't get directory does't exist when updating
-COPY ./back-end /symfony-and-react/back-end/
+COPY ./back-end/ /symfony-and-react/back-end/
 
-WORKDIR /symfony-and-react/back-end/
+WORKDIR /symfony-and-react/back-end/server
 
 # Install all of the necessary dependencies
-RUN composer install -d /symfony-and-react/back-end/server/
+RUN cd /symfony-and-react/back-end/server && composer install
 
 EXPOSE 8000

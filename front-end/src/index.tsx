@@ -25,18 +25,6 @@ const store = createStore(
     applyMiddleware(...middleware)
 )
 
-// if (process.env.NODE_ENV === 'development') {
-//     store = createStore(
-//         combineReducers({ searchUsers, requestUsers }),
-//         applyMiddleware(thunkMiddleware, createLogger())
-//     );
-// } else {
-//     console.log(process.env.NODE_ENV)
-//     store = createStore(
-//         combineReducers({ searchUsers, requestUsers }),
-//         applyMiddleware(thunkMiddleware));
-// }
-
 render(
     <Provider store={store} >
         <App />

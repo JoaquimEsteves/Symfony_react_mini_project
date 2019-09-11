@@ -26,9 +26,7 @@ WORKDIR /symfony-and-react/front-end/
 
 # Install all of the necessary dependencies
 # Install all of the necessary dependencies
-RUN npm --prefix /symfony-and-react/front-end/ install && \
-    npm --prefix /symfony-and-react/front-end/ update
-
-RUN npm run build
+RUN cd /symfony-and-react/front-end/ && npm install && \
+    npm update && npm run build
 
 EXPOSE 8000
