@@ -6,7 +6,7 @@ Simply run:
 
 `docker-compose up --build`
 
-Server will now be available At localhost:8005
+The Server will now be available at localhost:8005,
 and the front end will be available at localhost:5000
 
 ## Access the bash with
@@ -18,6 +18,7 @@ and the front end will be available at localhost:5000
 Go to the server container and execute:
 
 `php /symfony-and-react/back-end/server/bin/console app:download-users`
+
 `php /symfony-and-react/back-end/server/bin/console app:download-posts`
 
 Here's a pretty gif of the application working!
@@ -25,7 +26,7 @@ Here's a pretty gif of the application working!
 ![Screenshot](pretty.gif)
 
 
-## Philosophy 
+## Philosophy 🤔
 
 This project features a skeleton Symfony api, a mysql server to house our data and another server that serves a public build of the react front-end.
 
