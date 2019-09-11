@@ -22,9 +22,6 @@ RUN apt-get update && \
 # Copy the base files over, we use compose volumes in the yml file but it's still useful to copy them here so we don't get directory does't exist when updating
 COPY ./front-end /home/usr/symfony-and-react/front-end/
 
-RUN cd /home/usr/symfony-and-react/front-end/ && sudo npm install && sudo npm update
+RUN cd /home/usr/symfony-and-react/front-end/ && sudo npm install && sudo npm update && npm run build
 
 WORKDIR /home/usr/symfony-and-react/front-end/
-
-# Install all of the necessary dependencies
-CMD bash -c "npm run serve"
