@@ -56,6 +56,10 @@ It's the javascript framework I'm most familiar with, and I had developed a very
 
 Mostly to show profficiency and to learn them for fun.
 
+#### Why is this app a progressive web app?
+
+Create-React-App makes it incredibly simple to do create a progressive web app, although according to google's lighthouse we're still missing a couple of features like proper icons.
+
 #### Why use pigeon-maps instead of [Leaflet](https://leafletjs.com)
 
 I've had a previous experience working with pigeon-maps, which is a React-library with 0 dependencies and contains a gzipped size which is smaller than the equivalent React-Leaflet package.
@@ -67,3 +71,12 @@ Finally, it's also the first open source project I've made a small contribution 
 [See](https://github.com/mariusandra/pigeon-maps/issues/69)
 
 [and](https://github.com/mariusandra/pigeon-maps/pull/70)
+
+#### What where your biggest challanges?
+
+Symfony was a little tricky to work with,
+mostly due to the fact that it's similar, but just different enough to the other PHP framwork I've worked with, Zend.
+
+I'm still quite confused about how to set up a Service class.
+
+And also naturally, the _Docker-compose.yml_...
