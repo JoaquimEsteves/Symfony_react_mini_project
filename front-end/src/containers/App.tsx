@@ -54,7 +54,7 @@ export class App extends React.Component<AppProps, AppState> {
                 <div className="tc">
                     <h1>The users list is empty! Are you sure you populated the database?</h1>
                     <h1>Simply call <code>console app:download-users</code> on the server shell!</h1>
-                    <h2>You might aswell run <code>console app:download-posts</code> to access the user posts</h2>You might aswell run
+                    <h1>You might aswell run <code>console app:download-posts</code> to access the user posts</h1>
                 </div>
             );
         }
