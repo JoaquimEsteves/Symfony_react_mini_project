@@ -34,6 +34,7 @@ const BigCard = (props: BigCardProps) => {
                 return response.json();
             })
             .then(data => setPosts(JSON.parse(data)))
+            .catch(_error => setPosts([]));
     }
 
     useEffect(() => {

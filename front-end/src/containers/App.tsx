@@ -19,7 +19,6 @@ export const mapStateToProps = (state: AppState) => {
 export const mapDispatchToProps = (dispatch: Dispatch<any>) => {
     return {
         onSearchChange: (event: React.ChangeEvent<HTMLInputElement>) => {
-            console.log(event);
             return dispatch(setSearchField(event.target.value))
         },
         onRequestUsers: () => dispatch(setRequestUsers())
@@ -50,7 +49,15 @@ export class App extends React.Component<AppProps, AppState> {
                 </div>
             );
         }
-
+        if (users.length === 0) {
+            return (
+                <div className="tc">
+                    <h1>The users list is empty! Are you sure you populated the database?</h1>
+                    <h1>Simply call <code>console app:download-users</code> on the server shell!</h1>
+                    <p>You might aswell run <code>console app:download-posts</code> to access the user posts</p>You might aswell run
+                </div>
+            );
+        }
         return (
             <div className="tc">
                 <Header />
@@ -62,9 +69,9 @@ export class App extends React.Component<AppProps, AppState> {
                         onChange={onSearchChange}
                     />
                 </div>
-                
+
                 <ErrorBoundary>
-                    <CardList {...{robot_list:(this.filterUsers(users))}}/>
+                    <CardList {...{ user_list: (this.filterUsers(users)) }} />
                 </ErrorBoundary>
 
             </div>
