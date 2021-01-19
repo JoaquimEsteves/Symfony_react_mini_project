@@ -19,7 +19,7 @@ class DefaultController extends AbstractController
                     Hello there, I'm a public API! I return json objects like so:
                     <a
                     rel='noopener noreferrer' target='_blank'
-                    href='http://localhost:8005/api/public'> Click me!</a>
+                    href='/api/users'> Click me!</a>
                 </body>
             </html>"
         );
