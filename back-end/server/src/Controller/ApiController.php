@@ -35,6 +35,28 @@ class ApiController extends AbstractController
         ));
     }
 
+
+    /**
+     * @Route("/api/delete_users", name="delete_users")
+     * @return JsonResponse
+     */
+    public function usersDeleteAction(SerializerInterface $serializer)
+    {
+        $users = $this->getDoctrine()
+            ->getRepository(User::class)
+            ->getUsers();
+        if (!$users) {
+            return new JsonResponse("Could not find any users! Did you run the populate database commands?");
+	}
+ 	
+	$em = $this->getDoctrine()->getManager();
+	foreach($users AS $usr) {
+		$em->remove($usr);
+	}
+	$em->flush();
+	return new JsonResponse('All done! No more users');	
+    }
+
     /**
      * @Route("/api/posts/{user_id}", name="getPosts")
      */
